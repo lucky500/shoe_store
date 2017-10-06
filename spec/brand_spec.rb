@@ -8,4 +8,6 @@ describe(Brand) do
   it { should validate_presence_of(:price) }
 
   it { should validate_presence_of(:model) }
+
+  it { should validate_uniqueness_of(:model) }
 end
