@@ -1,0 +1,25 @@
+<h3>Stores</h3>
+
+
+
+<form action="/add_store" method="post">
+  <label for="name">Store Name: </label>
+  <input type="text" name="name">
+  <button type="submit" class="btn">Add a Store</button>
+</form>
+
+<h4>List of Stores</h4>
+
+<ul class="stores">
+  <% if @stores.any? %>
+    <% @stores.each do |store| %>
+      <li>
+        <a href="">
+          <%= store.name %>
+        </a>
+      </li> 
+    <% end %>
+  <% else %>
+    <p>There are currently no stores.</p>
+  <% end %>
+</ul>
