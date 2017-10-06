@@ -10,4 +10,6 @@ describe(Brand) do
   it { should validate_presence_of(:model) }
 
   it { should validate_uniqueness_of(:model) }
+
+  it { should validate_length_of(:name).is_at_most(100)}
 end

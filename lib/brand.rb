@@ -4,4 +4,5 @@ class Brand < ActiveRecord::Base
   validates(:price, {:presence => true})
   validates(:model, {:presence => true})
   validates(:model, {:uniqueness => true})
+  validates_length_of :name, maximum: 100
 end
