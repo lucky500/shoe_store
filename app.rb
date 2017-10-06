@@ -17,3 +17,8 @@ post("/add_store") do
   # else
   redirect '/'
 end
+
+get("/stores/:id") do
+  @store = Store.find(params.fetch("id"))
+  erb(:store)
+end
