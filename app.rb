@@ -9,12 +9,27 @@ get("/") do
   erb(:index)
 end
 
+get("/brands") do
+  @brands = Brand.all
+  erb(:brands)
+end
+
 post("/add_store") do
   store = Store.new({:name => params['name']})
   if store.save
       redirect '/'
   else
     @error_type = store
+    erb(:errors)
+  end
+end
+
+post("/add_brand") do
+  brand = Brand.new({:name => params['name'], :model => params['model'], :price => params['price']})
+  if brand.save
+    redirect'/brands'
+  else
+    @error_type = brand
     erb(:errors)
   end
 end
