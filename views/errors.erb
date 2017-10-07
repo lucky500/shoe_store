@@ -1,0 +1,11 @@
+<h3>Oops, There were some errors:</h3>
+
+<div>
+  <% @error_type.errors().full_messages().each do |message| %>
+    <%= message %>
+  <% end %>
+</div>
+
+<p>
+  <a href="/">Return to the home page</a>
+</p>
