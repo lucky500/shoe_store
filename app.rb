@@ -36,5 +36,12 @@ patch("/stores/:id") do
   redirect '/stores/' + @store.id.to_s
 end
 
+delete("/stores/:id") do
+  @store = Store.find(params["id"].to_i)
+  @store.delete()
+  @stores = Store.all()
+  redirect '/'
+end
+
 
 
