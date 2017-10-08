@@ -2,10 +2,40 @@
   <div class="col s12">
     <%= @store.name %>
     <a href="/stores/<%= @store.id %>/edit">Edit this store</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <!-- add brands -->
     <div>
-      <button class="btn">
-        <a href="/">Home</a>
-      </button>
+      <h5>Add a brand</h5>
+      <form action="/add-brand-to-store/<%= @store.id %>" method="post">
+        <label for="brand_list">Select a Brand to add to the store:</label>
+        <select id="brand_list" name="brand_id" type="text">
+          <% @brands.each do |brand| %>
+            <option value="<%= brand.id %>"><%= brand.name %></option>
+          <% end %>
+        </select>
+        <br>
+        <button class="btn" type="submit">Add Brand</button>
+      </form>
     </div>
   </div>
+</div>
+<div class="row">
+  <% if @store.brands.any? %>
+    <% @store.brands.each do |brand| %>
+      <div>
+        <a href="/brands/<%= brand.id %>">
+          <%= brand.name %>
+        </a>
+      </div>
+    <% end %>
+    <% else %>
+      <p>There are no brands to display.</p>
+  <% end %>
+</div>
+<div class="row">
+  <p>Return Home</p>
+  <a href="/">Home</a>
 </div>

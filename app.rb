@@ -35,9 +35,18 @@ post("/add_brand") do
 end
 
 get("/stores/:id") do
-  @store = Store.find(params.fetch("id"))
+  @store = Store.find(params.fetch("id").to_i)
+  @brands = Brand.all
   erb(:store)
 end
+
+post('/add-brand-to-store/:id') do
+  @store = Store.find(params[:id])
+  @brand = Brand.find(params["brand_id"])
+  @store.brands.push(@brand)
+  redirect back
+end
+
 
 get("/stores/:id/edit") do
   @store = Store.find(params[:id].to_i)
